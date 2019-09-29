@@ -13,6 +13,10 @@ This is the private key used by curl.
 export auth=$(grep certificate-authority-data ~/.kube/config |cut -d " " -f 6)
 ```
 This is used by curl to use the specified certificate to verify the peer.
+### Get authentication token from secret
+```
+export token=$(kubectl describe secret default-token-X | grep ^token | cut -f7 -d " ")
+```
 ### Set file ownership
 ```
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
